@@ -24,11 +24,11 @@ function perform_backup {
   local BACKUP_FILE
   local selected_directories=()
 
-  BACKUP_PATH=$(whiptail --backtitle "Proxmox VE Helper Scripts" --inputbox "\nDefaults to /root/\ne.g. /mnt/backups/" 11 68 --title "Directory to backup to:" 3>&1 1>&2 2>&3) || return
+  BACKUP_PATH=$(whiptail --backtitle "SR7" --inputbox "\nDefaults to /root/\ne.g. /mnt/backups/" 11 68 --title "Directory to backup to:" 3>&1 1>&2 2>&3) || return
 
   BACKUP_PATH="${BACKUP_PATH:-/root/}"
 
-  DIR=$(whiptail --backtitle "Proxmox VE Helper Scripts" --inputbox "\nDefaults to /etc/\ne.g. /root/, /var/lib/pve-cluster/ etc." 11 68 --title "Directory to work in:" 3>&1 1>&2 2>&3) || return
+  DIR=$(whiptail --backtitle "SR7" --inputbox "\nDefaults to /etc/\ne.g. /root/, /var/lib/pve-cluster/ etc." 11 68 --title "Directory to work in:" 3>&1 1>&2 2>&3) || return
 
   DIR="${DIR:-/etc/}"
 
@@ -63,7 +63,7 @@ function perform_backup {
 }
 
 while true; do
-  if (whiptail --backtitle "Proxmox VE Helper Scripts" --title "Proxmox VE Host Backup" --yesno "This will create backups for particular files and directories located within a designated directory. Proceed?" 10 88); then
+  if (whiptail --backtitle "SR7" --title "Proxmox VE Host Backup" --yesno "This will create backups for particular files and directories located within a designated directory. Proceed?" 10 88); then
     perform_backup
   else
     break

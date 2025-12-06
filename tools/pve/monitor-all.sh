@@ -129,7 +129,7 @@ remove() {
 OPTIONS=(Add "Add Monitor-All to Proxmox VE"
   Remove "Remove Monitor-All from Proxmox VE")
 
-CHOICE=$(whiptail --backtitle "Proxmox VE Helper Scripts" --title "Monitor-All for Proxmox VE" --menu "Select an option:" 10 58 2 \
+CHOICE=$(whiptail --backtitle "SR7" --title "Monitor-All for Proxmox VE" --menu "Select an option:" 10 58 2 \
   "${OPTIONS[@]}" 3>&1 1>&2 2>&3)
 
 case $CHOICE in

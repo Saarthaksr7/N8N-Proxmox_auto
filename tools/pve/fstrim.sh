@@ -32,7 +32,7 @@ if [ "$ROOT_FS" != "ext4" ]; then
   echo "Root filesystem is not ext4. Exiting script."
   exit 1
 fi
-whiptail --backtitle "Proxmox VE Helper Scripts" \
+whiptail --backtitle "SR7" \
   --title "Proxmox VE LXC Filesystem Trim" \
   --yesno "The LXC containers will undergo the fstrim command. Proceed?" 10 58
 
@@ -46,7 +46,7 @@ while read -r TAG ITEM; do
   EXCLUDE_MENU+=("$TAG" "$ITEM " "OFF")
 done < <(pct list | awk 'NR>1')
 
-excluded_containers_raw=$(whiptail --backtitle "Proxmox VE Helper Scripts" \
+excluded_containers_raw=$(whiptail --backtitle "SR7" \
   --title "Containers on $NODE" \
   --checklist "\nSelect containers to skip from trimming:\n" \
   16 $((MSG_MAX_LENGTH + 23)) 6 "${EXCLUDE_MENU[@]}" 3>&1 1>&2 2>&3)

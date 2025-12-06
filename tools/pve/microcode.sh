@@ -45,7 +45,7 @@ intel() {
 
   intel_microcode=$(curl -fsSL "https://ftp.debian.org/debian/pool/non-free-firmware/i/intel-microcode//" | grep -o 'href="[^"]*amd64.deb"' | sed 's/href="//;s/"//')
   [ -z "$intel_microcode" ] && {
-    whiptail --backtitle "Proxmox VE Helper Scripts" --title "No Microcode Found" --msgbox "It appears there were no microcode packages found\n Try again later." 10 68
+    whiptail --backtitle "SR7" --title "No Microcode Found" --msgbox "It appears there were no microcode packages found\n Try again later." 10 68
     msg_info "Exiting"
     sleep 1
     msg_ok "Done"
@@ -61,10 +61,10 @@ intel() {
     MICROCODE_MENU+=("$TAG" "$ITEM " "OFF")
   done < <(echo "$intel_microcode")
 
-  microcode=$(whiptail --backtitle "Proxmox VE Helper Scripts" --title "Current Microcode revision:${current_microcode}" --radiolist "\nSelect a microcode package to install:\n" 16 $((MSG_MAX_LENGTH + 58)) 6 "${MICROCODE_MENU[@]}" 3>&1 1>&2 2>&3 | tr -d '"')
+  microcode=$(whiptail --backtitle "SR7" --title "Current Microcode revision:${current_microcode}" --radiolist "\nSelect a microcode package to install:\n" 16 $((MSG_MAX_LENGTH + 58)) 6 "${MICROCODE_MENU[@]}" 3>&1 1>&2 2>&3 | tr -d '"')
 
   [ -z "$microcode" ] && {
-    whiptail --backtitle "Proxmox VE Helper Scripts" --title "No Microcode Selected" --msgbox "It appears that no microcode packages were selected" 10 68
+    whiptail --backtitle "SR7" --title "No Microcode Selected" --msgbox "It appears that no microcode packages were selected" 10 68
     msg_info "Exiting"
     sleep 1
     msg_ok "Done"
@@ -89,7 +89,7 @@ amd() {
   amd_microcode=$(curl -fsSL "https://ftp.debian.org/debian/pool/non-free-firmware/a/amd64-microcode///" | grep -o 'href="[^"]*amd64.deb"' | sed 's/href="//;s/"//')
 
   [ -z "$amd_microcode" ] && {
-    whiptail --backtitle "Proxmox VE Helper Scripts" --title "No Microcode Found" --msgbox "It appears there were no microcode packages found\n Try again later." 10 68
+    whiptail --backtitle "SR7" --title "No Microcode Found" --msgbox "It appears there were no microcode packages found\n Try again later." 10 68
     msg_info "Exiting"
     sleep 1
     msg_ok "Done"
@@ -105,10 +105,10 @@ amd() {
     MICROCODE_MENU+=("$TAG" "$ITEM " "OFF")
   done < <(echo "$amd_microcode")
 
-  microcode=$(whiptail --backtitle "Proxmox VE Helper Scripts" --title "Current Microcode revision:${current_microcode}" --radiolist "\nSelect a microcode package to install:\n" 16 $((MSG_MAX_LENGTH + 58)) 6 "${MICROCODE_MENU[@]}" 3>&1 1>&2 2>&3 | tr -d '"')
+  microcode=$(whiptail --backtitle "SR7" --title "Current Microcode revision:${current_microcode}" --radiolist "\nSelect a microcode package to install:\n" 16 $((MSG_MAX_LENGTH + 58)) 6 "${MICROCODE_MENU[@]}" 3>&1 1>&2 2>&3 | tr -d '"')
 
   [ -z "$microcode" ] && {
-    whiptail --backtitle "Proxmox VE Helper Scripts" --title "No Microcode Selected" --msgbox "It appears that no microcode packages were selected" 10 68
+    whiptail --backtitle "SR7" --title "No Microcode Selected" --msgbox "It appears that no microcode packages were selected" 10 68
     msg_info "Exiting"
     sleep 1
     msg_ok "Done"
@@ -135,7 +135,7 @@ if ! command -v pveversion >/dev/null 2>&1; then
   exit
 fi
 
-whiptail --backtitle "Proxmox VE Helper Scripts" --title "Proxmox VE Processor Microcode" --yesno "This will check for CPU microcode packages with the option to install. Proceed?" 10 58
+whiptail --backtitle "SR7" --title "Proxmox VE Processor Microcode" --yesno "This will check for CPU microcode packages with the option to install. Proceed?" 10 58
 
 msg_info "Checking CPU Vendor"
 cpu=$(lscpu | grep -oP 'Vendor ID:\s*\K\S+' | head -n 1)
