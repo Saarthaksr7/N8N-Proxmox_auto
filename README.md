@@ -2,36 +2,372 @@
 
 A collection of scripts to automate specific tasks in Proxmox VE, customized for SR7.
 
-## Overview
+## CT Scripts
 
-This repository contains various scripts to help manage Proxmox VE, including:
+Container (LXC) scripts.
 
-- **Container (LXC) Scripts**: Automated creation and setup of LXC containers for various services.
-- **VM Scripts**: Helpers for creating Virtual Machines.
-- **Tools**: Maintenance and utility scripts for Proxmox VE hosts.
+| Script | Command |
+| :--- | :--- |
+| 2fauth.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/2fauth.sh)"` |
+| actualbudget.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/actualbudget.sh)"` |
+| adguard.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/adguard.sh)"` |
+| adventurelog.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/adventurelog.sh)"` |
+| agentdvr.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/agentdvr.sh)"` |
+| alpine-adguard.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/alpine-adguard.sh)"` |
+| alpine-docker.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/alpine-docker.sh)"` |
+| alpine-gitea.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/alpine-gitea.sh)"` |
+| alpine-grafana.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/alpine-grafana.sh)"` |
+| alpine-it-tools.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/alpine-it-tools.sh)"` |
+| alpine-komodo.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/alpine-komodo.sh)"` |
+| alpine-mariadb.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/alpine-mariadb.sh)"` |
+| alpine-nextcloud.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/alpine-nextcloud.sh)"` |
+| alpine-node-red.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/alpine-node-red.sh)"` |
+| alpine-postgresql.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/alpine-postgresql.sh)"` |
+| alpine-prometheus.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/alpine-prometheus.sh)"` |
+| alpine-rclone.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/alpine-rclone.sh)"` |
+| alpine-redis.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/alpine-redis.sh)"` |
+| alpine-tinyauth.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/alpine-tinyauth.sh)"` |
+| alpine-transmission.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/alpine-transmission.sh)"` |
+| alpine-vaultwarden.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/alpine-vaultwarden.sh)"` |
+| alpine-wireguard.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/alpine-wireguard.sh)"` |
+| alpine-zigbee2mqtt.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/alpine-zigbee2mqtt.sh)"` |
+| alpine.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/alpine.sh)"` |
+| apache-cassandra.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/apache-cassandra.sh)"` |
+| apache-couchdb.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/apache-couchdb.sh)"` |
+| apache-guacamole.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/apache-guacamole.sh)"` |
+| apache-tika.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/apache-tika.sh)"` |
+| apache-tomcat.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/apache-tomcat.sh)"` |
+| apt-cacher-ng.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/apt-cacher-ng.sh)"` |
+| archivebox.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/archivebox.sh)"` |
+| aria2.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/aria2.sh)"` |
+| audiobookshelf.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/audiobookshelf.sh)"` |
+| authelia.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/authelia.sh)"` |
+| authentik.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/authentik.sh)"` |
+| autobrr.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/autobrr.sh)"` |
+| baikal.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/baikal.sh)"` |
+| barcode-buddy.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/barcode-buddy.sh)"` |
+| bazarr.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/bazarr.sh)"` |
+| beszel.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/beszel.sh)"` |
+| blocky.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/blocky.sh)"` |
+| boltdiy.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/boltdiy.sh)"` |
+| bookstack.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/bookstack.sh)"` |
+| bunkerweb.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/bunkerweb.sh)"` |
+| bytestash.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/bytestash.sh)"` |
+| caddy.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/caddy.sh)"` |
+| calibre-web.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/calibre-web.sh)"` |
+| casaos.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/casaos.sh)"` |
+| changedetection.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/changedetection.sh)"` |
+| channels.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/channels.sh)"` |
+| checkmk.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/checkmk.sh)"` |
+| cloudflared.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/cloudflared.sh)"` |
+| cockpit.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/cockpit.sh)"` |
+| commafeed.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/commafeed.sh)"` |
+| cosmos.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/cosmos.sh)"` |
+| crafty-controller.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/crafty-controller.sh)"` |
+| create_lxc.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/create_lxc.sh)"` |
+| cronicle.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/cronicle.sh)"` |
+| cross-seed.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/cross-seed.sh)"` |
+| cryptpad.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/cryptpad.sh)"` |
+| daemonsync.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/daemonsync.sh)"` |
+| dashy.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/dashy.sh)"` |
+| debian.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/debian.sh)"` |
+| deconz.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/deconz.sh)"` |
+| deluge.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/deluge.sh)"` |
+| docker.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/docker.sh)"` |
+| dockge.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/dockge.sh)"` |
+| docmost.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/docmost.sh)"` |
+| documenso.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/documenso.sh)"` |
+| dolibarr.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/dolibarr.sh)"` |
+| dotnetaspwebapi.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/dotnetaspwebapi.sh)"` |
+| duplicati.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/duplicati.sh)"` |
+| elementsynapse.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/elementsynapse.sh)"` |
+| emby.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/emby.sh)"` |
+| emqx.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/emqx.sh)"` |
+| ersatztv.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/ersatztv.sh)"` |
+| esphome.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/esphome.sh)"` |
+| evcc.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/evcc.sh)"` |
+| excalidraw.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/excalidraw.sh)"` |
+| fenrus.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/fenrus.sh)"` |
+| fhem.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/fhem.sh)"` |
+| fileflows.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/fileflows.sh)"` |
+| firefly.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/firefly.sh)"` |
+| flaresolverr.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/flaresolverr.sh)"` |
+| flowiseai.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/flowiseai.sh)"` |
+| fluid-calendar.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/fluid-calendar.sh)"` |
+| forgejo.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/forgejo.sh)"` |
+| freshrss.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/freshrss.sh)"` |
+| frigate.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/frigate.sh)"` |
+| fumadocs.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/fumadocs.sh)"` |
+| ghost.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/ghost.sh)"` |
+| gitea.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/gitea.sh)"` |
+| glance.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/glance.sh)"` |
+| glpi.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/glpi.sh)"` |
+| go2rtc.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/go2rtc.sh)"` |
+| gokapi.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/gokapi.sh)"` |
+| gomft.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/gomft.sh)"` |
+| gotify.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/gotify.sh)"` |
+| grafana.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/grafana.sh)"` |
+| graylog.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/graylog.sh)"` |
+| grist.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/grist.sh)"` |
+| grocy.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/grocy.sh)"` |
+| habitica.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/habitica.sh)"` |
+| headscale.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/headscale.sh)"` |
+| heimdall-dashboard.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/heimdall-dashboard.sh)"` |
+| hev-socks5-server.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/hev-socks5-server.sh)"` |
+| hivemq.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/hivemq.sh)"` |
+| hoarder.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/hoarder.sh)"` |
+| homarr.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/homarr.sh)"` |
+| homeassistant-core.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/homeassistant-core.sh)"` |
+| homeassistant.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/homeassistant.sh)"` |
+| homebox.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/homebox.sh)"` |
+| homebridge.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/homebridge.sh)"` |
+| homepage.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/homepage.sh)"` |
+| homer.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/homer.sh)"` |
+| hyperhdr.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/hyperhdr.sh)"` |
+| hyperion.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/hyperion.sh)"` |
+| influxdb.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/influxdb.sh)"` |
+| inspircd.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/inspircd.sh)"` |
+| inventree.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/inventree.sh)"` |
+| iobroker.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/iobroker.sh)"` |
+| iventoy.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/iventoy.sh)"` |
+| jackett.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/jackett.sh)"` |
+| jellyfin.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/jellyfin.sh)"` |
+| jellyseerr.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/jellyseerr.sh)"` |
+| jenkins.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/jenkins.sh)"` |
+| jupyternotebook.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/jupyternotebook.sh)"` |
+| karakeep.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/karakeep.sh)"` |
+| kavita.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/kavita.sh)"` |
+| keycloak.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/keycloak.sh)"` |
+| kimai.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/kimai.sh)"` |
+| koillection.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/koillection.sh)"` |
+| kometa.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/kometa.sh)"` |
+| komga.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/komga.sh)"` |
+| komodo.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/komodo.sh)"` |
+| kubo.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/kubo.sh)"` |
+| lazylibrarian.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/lazylibrarian.sh)"` |
+| lidarr.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/lidarr.sh)"` |
+| linkwarden.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/linkwarden.sh)"` |
+| listmonk.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/listmonk.sh)"` |
+| lldap.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/lldap.sh)"` |
+| lubelogger.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/lubelogger.sh)"` |
+| mafl.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/mafl.sh)"` |
+| magicmirror.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/magicmirror.sh)"` |
+| mariadb.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/mariadb.sh)"` |
+| matterbridge.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/matterbridge.sh)"` |
+| mattermost.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/mattermost.sh)"` |
+| mediamtx.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/mediamtx.sh)"` |
+| medusa.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/medusa.sh)"` |
+| meilisearch.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/meilisearch.sh)"` |
+| memos.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/memos.sh)"` |
+| meshcentral.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/meshcentral.sh)"` |
+| metube.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/metube.sh)"` |
+| minio.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/minio.sh)"` |
+| mongodb.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/mongodb.sh)"` |
+| monica.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/monica.sh)"` |
+| motioneye.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/motioneye.sh)"` |
+| mqtt.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/mqtt.sh)"` |
+| mylar3.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/mylar3.sh)"` |
+| myspeed.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/myspeed.sh)"` |
+| mysql.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/mysql.sh)"` |
+| n8n.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/n8n.sh)"` |
+| navidrome.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/navidrome.sh)"` |
+| neo4j.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/neo4j.sh)"` |
+| netbox.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/netbox.sh)"` |
+| nextcloudpi.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/nextcloudpi.sh)"` |
+| nextpvr.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/nextpvr.sh)"` |
+| nginxproxymanager.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/nginxproxymanager.sh)"` |
+| nocodb.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/nocodb.sh)"` |
+| node-red.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/node-red.sh)"` |
+| nodebb.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/nodebb.sh)"` |
+| notifiarr.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/notifiarr.sh)"` |
+| npmplus.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/npmplus.sh)"` |
+| ntfy.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/ntfy.sh)"` |
+| nxwitness.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/nxwitness.sh)"` |
+| nzbget.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/nzbget.sh)"` |
+| octoprint.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/octoprint.sh)"` |
+| ollama.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/ollama.sh)"` |
+| omada.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/omada.sh)"` |
+| ombi.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/ombi.sh)"` |
+| omv.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/omv.sh)"` |
+| onedev.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/onedev.sh)"` |
+| opengist.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/opengist.sh)"` |
+| openhab.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/openhab.sh)"` |
+| openobserve.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/openobserve.sh)"` |
+| openproject.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/openproject.sh)"` |
+| openwebui.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/openwebui.sh)"` |
+| openziti-controller.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/openziti-controller.sh)"` |
+| openziti-tunnel.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/openziti-tunnel.sh)"` |
+| outline.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/outline.sh)"` |
+| overseerr.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/overseerr.sh)"` |
+| owncast.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/owncast.sh)"` |
+| pairdrop.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/pairdrop.sh)"` |
+| paperless-ai.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/paperless-ai.sh)"` |
+| paperless-gpt.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/paperless-gpt.sh)"` |
+| paperless-ngx.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/paperless-ngx.sh)"` |
+| part-db.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/part-db.sh)"` |
+| paymenter.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/paymenter.sh)"` |
+| peanut.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/peanut.sh)"` |
+| pelican-panel.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/pelican-panel.sh)"` |
+| pelican-wings.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/pelican-wings.sh)"` |
+| petio.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/petio.sh)"` |
+| pf2etools.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/pf2etools.sh)"` |
+| photoprism.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/photoprism.sh)"` |
+| phpipam.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/phpipam.sh)"` |
+| pialert.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/pialert.sh)"` |
+| pihole.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/pihole.sh)"` |
+| pingvin.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/pingvin.sh)"` |
+| plant-it.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/plant-it.sh)"` |
+| plex.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/plex.sh)"` |
+| pocketbase.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/pocketbase.sh)"` |
+| pocketid.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/pocketid.sh)"` |
+| podman-homeassistant.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/podman-homeassistant.sh)"` |
+| podman.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/podman.sh)"` |
+| postgresql.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/postgresql.sh)"` |
+| privatebin.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/privatebin.sh)"` |
+| projectsend.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/projectsend.sh)"` |
+| prometheus-alertmanager.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/prometheus-alertmanager.sh)"` |
+| prometheus-paperless-ngx-exporter.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/prometheus-paperless-ngx-exporter.sh)"` |
+| prometheus-pve-exporter.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/prometheus-pve-exporter.sh)"` |
+| prometheus.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/prometheus.sh)"` |
+| prowlarr.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/prowlarr.sh)"` |
+| proxmox-backup-server.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/proxmox-backup-server.sh)"` |
+| proxmox-datacenter-manager.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/proxmox-datacenter-manager.sh)"` |
+| proxmox-mail-gateway.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/proxmox-mail-gateway.sh)"` |
+| ps5-mqtt.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/ps5-mqtt.sh)"` |
+| pterodactyl-panel.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/pterodactyl-panel.sh)"` |
+| pterodactyl-wings.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/pterodactyl-wings.sh)"` |
+| qbittorrent.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/qbittorrent.sh)"` |
+| rabbitmq.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/rabbitmq.sh)"` |
+| radarr.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/radarr.sh)"` |
+| radicale.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/radicale.sh)"` |
+| rdtclient.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/rdtclient.sh)"` |
+| reactive-resume.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/reactive-resume.sh)"` |
+| readarr.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/readarr.sh)"` |
+| readeck.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/readeck.sh)"` |
+| recyclarr.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/recyclarr.sh)"` |
+| redis.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/redis.sh)"` |
+| revealjs.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/revealjs.sh)"` |
+| rtsptoweb.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/rtsptoweb.sh)"` |
+| runtipi.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/runtipi.sh)"` |
+| rustdeskserver.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/rustdeskserver.sh)"` |
+| sabnzbd.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/sabnzbd.sh)"` |
+| searxng.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/searxng.sh)"` |
+| seelf.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/seelf.sh)"` |
+| semaphore.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/semaphore.sh)"` |
+| sftpgo.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/sftpgo.sh)"` |
+| shinobi.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/shinobi.sh)"` |
+| silverbullet.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/silverbullet.sh)"` |
+| slskd.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/slskd.sh)"` |
+| smokeping.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/smokeping.sh)"` |
+| snipeit.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/snipeit.sh)"` |
+| sonarr.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/sonarr.sh)"` |
+| spoolman.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/spoolman.sh)"` |
+| sqlserver2022.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/sqlserver2022.sh)"` |
+| stirling-pdf.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/stirling-pdf.sh)"` |
+| streamlink-webui.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/streamlink-webui.sh)"` |
+| suwayomiserver.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/suwayomiserver.sh)"` |
+| syncthing.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/syncthing.sh)"` |
+| tandoor.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/tandoor.sh)"` |
+| tasmoadmin.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/tasmoadmin.sh)"` |
+| tasmocompiler.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/tasmocompiler.sh)"` |
+| tautulli.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/tautulli.sh)"` |
+| tdarr.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/tdarr.sh)"` |
+| technitiumdns.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/technitiumdns.sh)"` |
+| teddycloud.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/teddycloud.sh)"` |
+| the-lounge.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/the-lounge.sh)"` |
+| threadfin.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/threadfin.sh)"` |
+| tianji.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/tianji.sh)"` |
+| traccar.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/traccar.sh)"` |
+| traefik.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/traefik.sh)"` |
+| transmission.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/transmission.sh)"` |
+| trilium.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/trilium.sh)"` |
+| typesense.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/typesense.sh)"` |
+| ubuntu.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/ubuntu.sh)"` |
+| umami.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/umami.sh)"` |
+| umbrel.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/umbrel.sh)"` |
+| umlautadaptarr.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/umlautadaptarr.sh)"` |
+| unbound.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/unbound.sh)"` |
+| unifi.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/unifi.sh)"` |
+| unmanic.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/unmanic.sh)"` |
+| uptimekuma.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/uptimekuma.sh)"` |
+| urbackupserver.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/urbackupserver.sh)"` |
+| vaultwarden.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/vaultwarden.sh)"` |
+| victoriametrics.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/victoriametrics.sh)"` |
+| vikunja.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/vikunja.sh)"` |
+| wallos.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/wallos.sh)"` |
+| wastebin.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/wastebin.sh)"` |
+| watcharr.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/watcharr.sh)"` |
+| watchyourlan.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/watchyourlan.sh)"` |
+| wavelog.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/wavelog.sh)"` |
+| wazuh.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/wazuh.sh)"` |
+| web-check.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/web-check.sh)"` |
+| wger.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/wger.sh)"` |
+| whisparr.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/whisparr.sh)"` |
+| wikijs.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/wikijs.sh)"` |
+| wireguard.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/wireguard.sh)"` |
+| wordpress.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/wordpress.sh)"` |
+| yt-dlp-webui.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/yt-dlp-webui.sh)"` |
+| yunohost.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/yunohost.sh)"` |
+| zabbix.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/zabbix.sh)"` |
+| zammad.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/zammad.sh)"` |
+| zerotier-one.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/zerotier-one.sh)"` |
+| zigbee2mqtt.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/zigbee2mqtt.sh)"` |
+| zipline.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/zipline.sh)"` |
+| zitadel.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/zitadel.sh)"` |
+| zoraxy.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/zoraxy.sh)"` |
+| zwave-js-ui.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/zwave-js-ui.sh)"` |
 
-## Repository Structure
+## VM Scripts
 
-- `ct/` - Scripts for creating specific LXC containers (e.g., Alpine, Node.js, databases).
-- `vm/` - Scripts for creating Virtual Machines.
-- `tools/` - General utility scripts (e.g., post-install setup, cleaning, updates).
-- `turnkey/` - Turnkey Linux templates/scripts.
+Virtual Machine (VM) scripts.
 
-## Usage
+| Script | Command |
+| :--- | :--- |
+| archlinux-vm.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/vm/archlinux-vm.sh)"` |
+| debian-vm.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/vm/debian-vm.sh)"` |
+| docker-vm.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/vm/docker-vm.sh)"` |
+| haos-vm.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/vm/haos-vm.sh)"` |
+| mikrotik-routeros.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/vm/mikrotik-routeros.sh)"` |
+| nextcloud-vm.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/vm/nextcloud-vm.sh)"` |
+| openwrt.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/vm/openwrt.sh)"` |
+| opnsense-vm.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/vm/opnsense-vm.sh)"` |
+| owncloud-vm.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/vm/owncloud-vm.sh)"` |
+| pimox-haos-vm.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/vm/pimox-haos-vm.sh)"` |
+| ubuntu2204-vm.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/vm/ubuntu2204-vm.sh)"` |
+| ubuntu2404-vm.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/vm/ubuntu2404-vm.sh)"` |
+| ubuntu2410-vm.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/vm/ubuntu2410-vm.sh)"` |
 
-To use these scripts, typically you would run them directly on your Proxmox VE host shell.
+## TOOLS Scripts
 
-**Example:**
-```bash
-bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/ct/alpine.sh)"
-```
+Maintenance and utility tools.
 
-*Note: Ensure you review scripts before running them on your system.*
+| Script | Command |
+| :--- | :--- |
+| add-lxc-iptag.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/tools/pve/add-lxc-iptag.sh)"` |
+| clean-lxcs.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/tools/pve/clean-lxcs.sh)"` |
+| clean-orphaned-lvm.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/tools/pve/clean-orphaned-lvm.sh)"` |
+| clean.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/tools/pve/clean.sh)"` |
+| container-restore-from-backup.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/tools/pve/container-restore-from-backup.sh)"` |
+| core-restore-from-backup.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/tools/pve/core-restore-from-backup.sh)"` |
+| cron-update-lxcs.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/tools/pve/cron-update-lxcs.sh)"` |
+| frigate-support.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/tools/pve/frigate-support.sh)"` |
+| fstrim.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/tools/pve/fstrim.sh)"` |
+| host-backup.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/tools/pve/host-backup.sh)"` |
+| hw-acceleration.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/tools/pve/hw-acceleration.sh)"` |
+| kernel-clean.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/tools/pve/kernel-clean.sh)"` |
+| kernel-pin.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/tools/pve/kernel-pin.sh)"` |
+| lxc-delete.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/tools/pve/lxc-delete.sh)"` |
+| microcode.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/tools/pve/microcode.sh)"` |
+| monitor-all.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/tools/pve/monitor-all.sh)"` |
+| pbs3-upgrade.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/tools/pve/pbs3-upgrade.sh)"` |
+| pbs_microcode.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/tools/pve/pbs_microcode.sh)"` |
+| post-pbs-install.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/tools/pve/post-pbs-install.sh)"` |
+| post-pmg-install.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/tools/pve/post-pmg-install.sh)"` |
+| post-pve-install.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/tools/pve/post-pve-install.sh)"` |
+| pve8-upgrade.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/tools/pve/pve8-upgrade.sh)"` |
+| scaling-governor.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/tools/pve/scaling-governor.sh)"` |
+| update-lxcs-cron.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/tools/pve/update-lxcs-cron.sh)"` |
+| update-lxcs.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/tools/pve/update-lxcs.sh)"` |
+| update-repo.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/tools/pve/update-repo.sh)"` |
+| usb-passthrough.sh | `bash -c "$(wget -qLO - https://raw.githubusercontent.com/Saarthaksr7/N8N-Proxmox_auto/main/tools/pve/usb-passthrough.sh)"` |
 
-## Disclaimer
-
-This project is a customized fork/collection. "SR7" scripts are provided as-is without warranty. Use at your own risk.
-
-## License
-
-See the LICENSE file for details (if applicable).
