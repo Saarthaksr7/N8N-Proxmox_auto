@@ -1823,7 +1823,6 @@ error_handler() {
   echo -e "\n$error_message"
   if [[ "$line_number" -eq 50 ]]; then
     echo -e "The silent function has suppressed the error, run the script with verbose mode enabled, which will provide more detailed output.\n"
-  else
   fi
 }
 
