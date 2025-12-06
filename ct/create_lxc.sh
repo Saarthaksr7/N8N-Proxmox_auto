@@ -1,0 +1,240 @@
+#!/usr/bin/env bash
+
+
+
+
+
+
+
+YW=$(echo "\033[33m")
+YWB=$(echo "\033[93m")
+BL=$(echo "\033[36m")
+RD=$(echo "\033[01;31m")
+GN=$(echo "\033[1;92m")
+
+CL=$(echo "\033[m")
+UL=$(echo "\033[4m")
+BOLD=$(echo "\033[1m")
+BFR="\\r\\033[K"
+HOLD=" "
+TAB="  "
+
+CM="${TAB}✔️${TAB}${CL}"
+CROSS="${TAB}✖️${TAB}${CL}"
+INFO="${TAB}💡${TAB}${CL}"
+
+set -Eeuo pipefail
+trap 'error_handler $LINENO "$BASH_COMMAND"' ERR
+
+function error_handler() {
+  if [ -n "$SPINNER_PID" ] && ps -p $SPINNER_PID >/dev/null; then kill $SPINNER_PID >/dev/null; fi
+  printf "\e[?25h"
+  local exit_code="$?"
+  local line_number="$1"
+  local command="$2"
+  local error_message="${RD}[ERROR]${CL} in line ${RD}$line_number${CL}: exit code ${RD}$exit_code${CL}: while executing command ${YW}$command${CL}"
+  echo -e "\n$error_message\n"
+  exit 200
+}
+
+function spinner() {
+  local frames=('⠋' '⠙' '⠹' '⠸' '⠼' '⠴' '⠦' '⠧' '⠇' '⠏')
+  local spin_i=0
+  local interval=0.1
+  printf "\e[?25l"
+
+  local color="${YWB}"
+
+  while true; do
+    printf "\r ${color}%s${CL}" "${frames[spin_i]}"
+    spin_i=$(((spin_i + 1) % ${#frames[@]}))
+    sleep "$interval"
+  done
+}
+
+function msg_info() {
+  local msg="$1"
+  echo -ne "${TAB}${YW}${HOLD}${msg}${HOLD}"
+  spinner &
+  SPINNER_PID=$!
+}
+
+function msg_warn() {
+  if [ -n "$SPINNER_PID" ] && ps -p $SPINNER_PID >/dev/null; then kill $SPINNER_PID >/dev/null; fi
+  printf "\e[?25h"
+  local msg="$1"
+  echo -e "${BFR}${INFO}${YWB}${msg}${CL}"
+}
+
+function msg_ok() {
+  if [ -n "$SPINNER_PID" ] && ps -p $SPINNER_PID >/dev/null; then kill $SPINNER_PID >/dev/null; fi
+  printf "\e[?25h"
+  local msg="$1"
+  echo -e "${BFR}${CM}${GN}${msg}${CL}"
+}
+
+function msg_error() {
+  if [ -n "$SPINNER_PID" ] && ps -p $SPINNER_PID >/dev/null; then kill $SPINNER_PID >/dev/null; fi
+  printf "\e[?25h"
+  local msg="$1"
+  echo -e "${BFR}${CROSS}${RD}${msg}${CL}"
+}
+
+msg_info "Validating Storage"
+VALIDCT=$(pvesm status -content rootdir | awk 'NR>1')
+if [ -z "$VALIDCT" ]; then
+  msg_error "Unable to detect a valid Container Storage location."
+  exit 1
+fi
+VALIDTMP=$(pvesm status -content vztmpl | awk 'NR>1')
+if [ -z "$VALIDTMP" ]; then
+  msg_error "Unable to detect a valid Template Storage location."
+  exit 1
+fi
+
+function select_storage() {
+  local CLASS=$1
+  local CONTENT
+  local CONTENT_LABEL
+  case $CLASS in
+  container)
+    CONTENT='rootdir'
+    CONTENT_LABEL='Container'
+    ;;
+  template)
+    CONTENT='vztmpl'
+    CONTENT_LABEL='Container template'
+    ;;
+  *) false || {
+    msg_error "Invalid storage class."
+    exit 201
+  } ;;
+  esac
+
+  local -a MENU
+  while read -r line; do
+    local TAG=$(echo $line | awk '{print $1}')
+    local TYPE=$(echo $line | awk '{printf "%-10s", $2}')
+    local FREE=$(echo $line | numfmt --field 4-6 --from-unit=K --to=iec --format %.2f | awk '{printf( "%9sB", $6)}')
+    local ITEM="Type: $TYPE Free: $FREE "
+    local OFFSET=2
+    if [[ $((${#ITEM} + $OFFSET)) -gt ${MSG_MAX_LENGTH:-} ]]; then
+      local MSG_MAX_LENGTH=$((${#ITEM} + $OFFSET))
+    fi
+    MENU+=("$TAG" "$ITEM" "OFF")
+  done < <(pvesm status -content $CONTENT | awk 'NR>1')
+
+  if [ $((${#MENU[@]} / 3)) -eq 1 ]; then
+    printf ${MENU[0]}
+  else
+    local STORAGE
+    while [ -z "${STORAGE:+x}" ]; do
+      STORAGE=$(whiptail --backtitle "SR7" --title "Storage Pools" --radiolist \
+        "Which storage pool would you like to use for the ${CONTENT_LABEL,,}?\nTo make a selection, use the Spacebar.\n" \
+        16 $(($MSG_MAX_LENGTH + 23)) 6 \
+        "${MENU[@]}" 3>&1 1>&2 2>&3) || {
+        msg_error "Menu aborted."
+        exit 202
+      }
+      if [ $? -ne 0 ]; then
+        echo -e "${CROSS}${RD} Menu aborted by user.${CL}"
+        exit 0
+      fi
+    done
+    printf "%s" "$STORAGE"
+  fi
+}
+[[ "${CTID:-}" ]] || {
+  msg_error "You need to set 'CTID' variable."
+  exit 203
+}
+[[ "${PCT_OSTYPE:-}" ]] || {
+  msg_error "You need to set 'PCT_OSTYPE' variable."
+  exit 204
+}
+
+[ "$CTID" -ge "100" ] || {
+  msg_error "ID cannot be less than 100."
+  exit 205
+}
+
+
+if qm status "$CTID" &>/dev/null || pct status "$CTID" &>/dev/null; then
+  echo -e "ID '$CTID' is already in use."
+  unset CTID
+  msg_error "Cannot use ID that is already in use."
+  exit 206
+fi
+
+TEMPLATE_STORAGE=$(select_storage template)
+msg_ok "Using ${BL}$TEMPLATE_STORAGE${CL} ${GN}for Template Storage."
+
+CONTAINER_STORAGE=$(select_storage container)
+msg_ok "Using ${BL}$CONTAINER_STORAGE${CL} ${GN}for Container Storage."
+
+msg_info "Updating LXC Template List"
+pveam update >/dev/null
+msg_ok "Updated LXC Template List"
+
+TEMPLATE_SEARCH=${PCT_OSTYPE}-${PCT_OSVERSION:-}
+mapfile -t TEMPLATES < <(pveam available -section system | sed -n "s/.*\($TEMPLATE_SEARCH.*\)/\1/p" | sort -t - -k 2 -V)
+[ ${#TEMPLATES[@]} -gt 0 ] || {
+  msg_error "Unable to find a template when searching for '$TEMPLATE_SEARCH'."
+  exit 207
+}
+TEMPLATE="${TEMPLATES[-1]}"
+TEMPLATE_PATH="$(pvesm path $TEMPLATE_STORAGE:vztmpl/$TEMPLATE)"
+if ! pveam list "$TEMPLATE_STORAGE" | grep -q "$TEMPLATE" || ! zstdcat "$TEMPLATE_PATH" | tar -tf - >/dev/null 2>&1; then
+  msg_warn "Template $TEMPLATE not found in storage or seems to be corrupted. Redownloading."
+  [[ -f "$TEMPLATE_PATH" ]] && rm -f "$TEMPLATE_PATH"
+
+  for attempt in {1..3}; do
+    msg_info "Attempt $attempt: Downloading LXC template..."
+
+    if timeout 120 pveam download "$TEMPLATE_STORAGE" "$TEMPLATE" >/dev/null; then
+      msg_ok "Template download successful."
+      break
+    fi
+
+    if [ $attempt -eq 3 ]; then
+      msg_error "Three failed attempts. Aborting."
+      exit 208
+    fi
+
+    sleep $((attempt * 5))
+  done
+fi
+msg_ok "LXC Template is ready to use."
+
+grep -q "root:100000:65536" /etc/subuid || echo "root:100000:65536" >>/etc/subuid
+grep -q "root:100000:65536" /etc/subgid || echo "root:100000:65536" >>/etc/subgid
+
+PCT_OPTIONS=(${PCT_OPTIONS[@]:-${DEFAULT_PCT_OPTIONS[@]}})
+[[ " ${PCT_OPTIONS[@]} " =~ " -rootfs " ]] || PCT_OPTIONS+=(-rootfs "$CONTAINER_STORAGE:${PCT_DISK_SIZE:-8}")
+
+msg_info "Creating LXC Container"
+if ! pct create "$CTID" "${TEMPLATE_STORAGE}:vztmpl/${TEMPLATE}" "${PCT_OPTIONS[@]}" &>/dev/null; then
+  msg_error "Container creation failed. Checking if template is corrupted."
+
+  if ! zstdcat "$TEMPLATE_PATH" | tar -tf - >/dev/null 2>&1; then
+    msg_error "Template appears to be corrupted. Removing and re-downloading."
+    rm -f "$TEMPLATE_PATH"
+
+    if ! timeout 120 pveam download "$TEMPLATE_STORAGE" "$TEMPLATE" >/dev/null; then
+      msg_error "Failed to re-download template."
+      exit 208
+    fi
+
+    msg_ok "Re-downloaded LXC Template"
+
+    if ! pct create "$CTID" "${TEMPLATE_STORAGE}:vztmpl/${TEMPLATE}" "${PCT_OPTIONS[@]}" &>/dev/null; then
+      msg_error "Container creation failed after re-downloading template."
+      exit 200
+    fi
+  else
+    msg_error "Container creation failed, but template is not corrupted."
+    exit 209
+  fi
+fi
+msg_ok "LXC Container ${BL}$CTID${CL} ${GN}was successfully created."
+
