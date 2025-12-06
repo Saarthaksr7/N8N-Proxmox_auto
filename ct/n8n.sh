@@ -3548,7 +3548,11 @@ check_container_storage() {
 }
 
 start() {
-  source $(dirname ${BASH_SOURCE[0]})/tools.func
+    if [[ -n "$TOOLS_FUNC_CONTENT" ]]; then
+    source <(echo "$TOOLS_FUNC_CONTENT")
+  else
+    source $(dirname ${BASH_SOURCE[0]})/tools.func
+  fi
   if command -v pveversion >/dev/null 2>&1; then
     if ! (whiptail --backtitle "SR7" --title "${APP} LXC" --yesno "This will create a New ${APP} LXC. Proceed?" 10 58); then
       clear
