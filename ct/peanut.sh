@@ -637,7 +637,7 @@ fetch_and_deploy_gh_release() {
   rm -rf "$tmpdir"
 }
 
-  install_ip_helper() {
+  install_local_ip() {
   local BASE_DIR="/usr/local/ip-management"
   local SCRIPT_PATH="$BASE_DIR/update_local_ip.sh"
   local IP_FILE="/run/local-ip.env"
@@ -1517,7 +1517,7 @@ fetch_and_deploy_gh_release() {
   rm -rf "$tmpdir"
 }
 
-  install_ip_helper() {
+  install_local_ip() {
   local BASE_DIR="/usr/local/ip-management"
   local SCRIPT_PATH="$BASE_DIR/update_local_ip.sh"
   local IP_FILE="/run/local-ip.env"
